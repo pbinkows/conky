@@ -112,14 +112,4 @@ ${color1}FORTUNE ${hr 2}$color
 ${execi 120 fortune -s | fold -w50}
 #${color1}Mail ${hr 2}$color
 #Unread/Read: ${execi 300 grep -c "X-Mozilla-Status: 0000" "/home/pbinkows/.thunderbird/HelpDesk.default/ImapMail/zpilot-mailbox.corp.redhat-1.com/INBOX"}
-RAM:$alignc $mem/$memmax
-$alignc$color ${memgraph 15,200 ffff00 ff0000 -t}
-I/O:$alignc $diskio_read/$diskio_write
-$alignc$color ${diskiograph 15,200 ffff00 ff0000 -t}
-${color grey}Frequency (in GHz):$color
- ${freq_g 1} ${freq_g freq_g2}
- $color CPU: $alignr${acpitemp}°C
- $color Fan(rpm): $alignr${execi 1.5 sensors|grep fan1|cut -c12-18}
- ${color grey}CPU Usage: ${cpubar 10,100 ffffff ff0000 -l -t} $cpu%
- ${cpugraph cpu1 15,100 ffff00 ff0000 -t} ${cpugraph cpu2 15,100 ffff00 ff0000 -t}
  
