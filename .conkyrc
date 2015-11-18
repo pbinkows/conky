@@ -15,11 +15,11 @@ draw_borders no
 draw_graph_borders yes
 draw_outline no
 draw_shades no
+#font
 use_xft yes
 xftfont Hack:size=10
 gap_x 20
-gap_y 60
-minimum_size 5 5
+gap_y 20
 net_avg_samples 2
 no_buffers yes
 out_to_console no
