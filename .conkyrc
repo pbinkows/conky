@@ -4,14 +4,13 @@
 alignment top_right
 #alignment bottom_left
 #alignment bottom_right
+
 double_buffer yes
 background yes
 border_width 1
 cpu_avg_samples 2
-#default_color white
-default_outline_color white
-default_shade_color white
 draw_borders no
+
 draw_graph_borders yes
 draw_outline no
 draw_shades no
@@ -25,6 +24,7 @@ no_buffers yes
 out_to_console no
 out_to_stderr no
 extra_newline no
+
 own_window yes
 own_window_class Conky
 own_window_type panel
@@ -34,6 +34,11 @@ own_window_argb_visual yes
 #Transparency value - higher is less transparent
 own_window_argb_value 180
 own_window_transparent no
+own_window_colour black
+
+#Minimum size of text area
+minimum_size 240 5
+
 stippled_borders 0
 update_interval 1.5
 uppercase no
@@ -43,12 +48,16 @@ show_graph_scale no show_graph_range no
 short_units yes 
 pad_percents 2
 top name_width 100 
-own_window_colour black
 
 default_color grey
+default_outline_color white
+default_shade_color white
+
 color0 FFFF66 #highlight color
-color1 orange #heading color
+color1 6495ED #heading color cornflower blue
+#color1 FF4500 #heading color
 color2 8B7500 #chart/bar color
+
            
 # Gap between borders of screen and text
 #gap_x 10
@@ -60,46 +69,38 @@ color2 8B7500 #chart/bar color
 TEXT
 
  $color
-${color1}${font Hack:size=15}SYSTEM$font${hr 2}$color
+${color1}${font Venus Rising:size=15}SYSTEM$font${hr 2}$color
  ${color0}$nodename $sysname$color
- ${color0}Uptime:$color$uptime
- ${color FFFFFF}${battery_bar 30,200 BAT0}$color ${battery_percent BAT0}%${goto 20}${color FF00FF}${font Hack:size=15}${voffset 10}Battery$font$color
-${color1}${font Hack:size=15}CPU$font${hr 2}$color
- ${color2}${cpugraph cpu1 30, 130 ffffff ffff00}${cpugraph cpu2 30, 130 ffff00 ffffff}${goto 20}#${voffset -15}CPU1#${goto 150}CPU2
- ${cpugraph cpu3 30, 130 ffff00 ffffff}${cpugraph cpu4 30, 130 ffff00 ffffff}${color}
-  #${color0}NAME  PID       CPU%      MEM%$color
-  #${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
-  #${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
-  #${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
-  #${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
-#${color1}${font Hack:size=15}MEMORY / DISK ${hr 2}${font}$color ${color0}I/O:${color2}$diskio_read/$diskio_write$color
-# $color ${diskiograph 15,200 ffff00 ff0000 -t}
-# ${color0}RAM:$color ${color2}${offset 10}${membar 10,100}$color $memperc% 
-# ${color0}Swap:$color ${color2}${offset 4}${swapbar 10,100}$color $swapperc%
- #${color0}Root:$color ${offset 10}${color2}${fs_bar 10,100 /}$color ${fs_used_perc /}%    
- #${color0}Home:$color ${offset 10}${color2}${fs_bar 10,100 /home}$color ${fs_used_perc /home}%    
- #${color0}Tmp:$color ${offset 22}${color2}${fs_bar 10,100 /tmp}$color ${fs_used_perc /tmp}%           
+ ${color0}Uptime: $color$uptime
+ ${color0}${font Venus Rising:size=15}Battery:$color ${color2}${goto 180}${battery_bar 10,100}$color ${battery_percent BAT0}%$font 
+${color1}${font Venus Rising:size=15}CPU$font${hr 2}$color 
+ ${color0}Load:$color ${loadavg} ${color0}Temp:$color${acpitemp}
+ ${cpugraph cpu1 30, 130 ffffff ffff00}${goto 200}${cpugraph cpu2 30, 130 ffff00 ffffff}${goto 20}${color1}${voffset 15}CPU0${goto 220}CPU1$color
+ ${voffset -20}${cpugraph cpu3 30, 130 ffffff ffff00}${goto 200}${cpugraph cpu4 30, 130 ffff00 ffffff}${goto 20}${color1}${voffset 15}CPU2${goto 220}${voffset -30}CPU3
+ ${voffset 10}${color0}${goto 20}NAME${goto 150}PID${goto 230}CPU%${goto 300}MEM%$color
+  ${goto 20}${top name 1}${goto 140}${top pid 1}${goto 210}${top cpu 1}${goto 280}${top mem 1}
+  ${goto 20}${top name 2}${goto 140}${top pid 2}${goto 210}${top cpu 2}${goto 280}${top mem 2}
+  ${goto 20}${top name 3}${goto 140}${top pid 3}${goto 210}${top cpu 3}${goto 280}${top mem 3}
+  ${goto 20}${top name 4}${goto 140}${top pid 4}${goto 210}${top cpu 4}${goto 280}${top mem 4}
+${color1}${font Venus Rising:size=15}MEMORY / DISK ${hr 2}
+ ${color0}${font Venus Rising:size=15}RAM: ${color2}${goto 180}${membar 10,100}$color $memperc% 
+ ${color0}${font Venus Rising:size=15}Swap: ${color2}${goto 180}${swapbar 10,100}$color $swapperc%
+ ${color0}${font Venus Rising:size=15}Root: ${goto 180}${color2}${fs_bar 10,100 /}$color ${fs_used_perc /}%    
+ ${color0}${font Venus Rising:size=15}Home: ${goto 180}${color2}${fs_bar 10,100 /home}$color ${fs_used_perc /home}%    
+ ${color0}${font Venus Rising:size=15}Tmp: ${goto 180}${color2}${fs_bar 10,100 /tmp}$color ${fs_used_perc /tmp}%           
+ ${color0}${font Venus Rising:size=15}I/O: ${color}${font}$diskio_read/$diskio_write${goto 170}${color2} ${diskiograph 10,100 ffff00 ff0000 -t}
+${color1}${font Venus Rising:size=15}NETWORK${font}${hr 2}$color
+ ${color0}${goto 5}Addresses:$color 
+ ${goto 10}${color0}LAN:$color${addr enp0s20u3u1u3}
+ ${goto 10}${color0}WLAN:$color${addr wlp4s0} (${wireless_essid wlp4s0}) 
+ ${goto 70}${color0}Qual $color${wireless_link_qual_perc wlp4s0}%
+ ${goto 10}${color0}VPN:$color${addr tun0} 
 
-#${color1}${font Hack:size=15}NETWORK${font}${hr 2}$color
-# ${color0}Addresses:$color 
-# ${offset 10}${color0}LAN:$color${addr enp0s20u3u1u3}
-# ${offset 25}${color0}WLAN:$color${addr wlp4s0} (${wireless_essid wlp4s0}) 
-# ${offset 10}${color0}Qual ${wireless_link_qual_perc wlp4s0}%
-# ${offset 10}${color0}VPN:$color${addr tun0} 
-
-# ${color0}LAN$color
-#      ${color0}Down:$color${downspeed enp0s20u3u1u3}k/s${color0}${offset 65}Up:$color${upspeed enp0s20u3u1u3}k/s
-#          $alignc${color2}${downspeedgraph enp0s20u3u1u3 30,130 ffffff FFFF66} ${color2}${upspeedgraph enp0s20u3u1u3 30, 130 FFFF66 ffffff}
-# ${color0}WLAN$color
-#      ${color0}Down:$color${downspeed wlp4s0}k/s${color2}${offset 65}Up:$color${upspeed wlp4s0}k/s
-#          $alignc${color2}${downspeedgraph wlp4s0 30,130 ffffff FFFF66} ${color2}${upspeedgraph wlp4s0 30, 130 FFFF66 ffffff}$color
-# ${color0}Total:$color${totaldown enp0s20u3u1u3} ${offset 65}${color0}Total:$color${totalup enp0s20u3u1u3}
-# ${execi 30 netstat -ept | grep ESTAB | awk '{print $9}' | cut -d: -f1 | sort | uniq -c | sort -nr}
-
-#${color orange}LOGGING ${hr 2}$color
-#${execi 30 tail -n3 /var/log/messages | awk '{print " ",$5,$6,$7,$8,$9,$10}' | fold -w60}
-#${color1}FORTUNE ${hr 2}$color
-# ${execi 120 fortune -s | fold -w30}
-#${color1}Mail ${hr 2}$color
-#Unread/Read: ${execi 300 grep -c "X-Mozilla-Status: 0000" "/home/pbinkows/.thunderbird/HelpDesk.default/ImapMail/zpilot-mailbox.corp.redhat-1.com/INBOX"}
- 
+ ${color0}LAN$color
+      ${color0}Down:$color${downspeed enp0s20u3u1u3}k/s${color0}${offset 65}Up:$color${upspeed enp0s20u3u1u3}k/s
+          $alignc${color2}${downspeedgraph enp0s20u3u1u3 30,130 ffffff FFFF66} ${color2}${upspeedgraph enp0s20u3u1u3 30, 130 FFFF66 ffffff}
+ ${color0}WLAN$color
+      ${color0}Down:$color${downspeed wlp4s0}k/s${color2}${offset 65}Up:$color${upspeed wlp4s0}k/s
+          $alignc${color2}${downspeedgraph wlp4s0 30,130 ffffff FFFF66} ${color2}${upspeedgraph wlp4s0 30, 130 FFFF66 ffffff}$color
+ ${color0}Total:$color${totaldown enp0s20u3u1u3} ${offset 65}${color0}Total:$color${totalup enp0s20u3u1u3}
+ ${execi 30 netstat -ept | grep ESTAB | awk '{print $9}' | cut -d: -f1 | sort | uniq -c | sort -nr}
