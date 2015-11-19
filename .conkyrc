@@ -75,8 +75,8 @@ ${color1}${font Venus Rising:size=15}SYSTEM$font${hr 2}$color
  ${color0}${font Venus Rising:size=15}Battery:$color ${color2}${goto 180}${battery_bar 10,100}$color ${battery_percent BAT0}%$font 
 ${color1}${font Venus Rising:size=15}CPU$font${hr 2}$color 
  ${color0}Load:$color ${loadavg} ${color0}Temp:$color${acpitemp}
- ${cpugraph cpu1 30, 130 ffffff ffff00}${goto 200}${cpugraph cpu2 30, 130 ffff00 ffffff}${goto 20}${color1}${voffset 15}CPU0${goto 220}CPU1$color
- ${voffset -20}${cpugraph cpu3 30, 130 ffffff ffff00}${goto 200}${cpugraph cpu4 30, 130 ffff00 ffffff}${goto 20}${color1}${voffset 15}CPU2${goto 220}${voffset -30}CPU3
+ ${cpugraph cpu1 30, 130 ffffff ffff00}${goto 200}${cpugraph cpu2 30, 130 ffff00 ffffff}${goto 50}${color1}${voffset 15}CPU0${goto 240}CPU1$color
+ ${voffset -20}${cpugraph cpu3 30, 130 ffffff ffff00}${goto 200}${cpugraph cpu4 30, 130 ffff00 ffffff}${goto 50}${color1}${voffset 15}CPU2${goto 240}${voffset -30}CPU3
  ${voffset 10}${color0}${goto 20}NAME${goto 150}PID${goto 230}CPU%${goto 300}MEM%$color
   ${goto 20}${top name 1}${goto 140}${top pid 1}${goto 210}${top cpu 1}${goto 280}${top mem 1}
   ${goto 20}${top name 2}${goto 140}${top pid 2}${goto 210}${top cpu 2}${goto 280}${top mem 2}
